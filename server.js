@@ -17,12 +17,8 @@ setInterval(function () {
             function (sell, sellIndex) {
                 return END_POINT_CONFIG.BUY_PRICE_PATH.map(function (buy, buyIndex) {
                     var sp,cp;
-                    try{
                         sp = HELPERS.get(res[sellIndex], sell);
                         cp =  HELPERS.get(res[buyIndex], buy);
-                    }catch (e){
-                        console.error("buy", e);
-                    }
 
                     return HELPERS.profit(
                         TARGET_PROFIT,

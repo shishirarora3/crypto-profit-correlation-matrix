@@ -42,14 +42,15 @@ module.exports = {
         console.log(sell, buy);
         var r = (sell - buy) * 100 / buy;
         var p = r - TRANSACTION_CHARGE;
+        var profitFixed = p.toFixed(2);
         if (p > TARGET_PROFIT) {
             notifier.notify({
-                title: 'Profit: '+ p.toFixed(2) +'%',
+                title: 'Profit: '+ profitFixed +'%',
                 message: message || ""
             });
         }
 
-        return p;
+        return profitFixed;
     },
     print : function (endPoints, matrix) {
 
