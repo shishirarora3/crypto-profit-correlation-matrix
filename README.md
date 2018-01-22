@@ -2,7 +2,7 @@
 
 commands to run;
 
-`node server.js`
+`npm install && node server.js`
 
  <h1>profit correllation matrix</h1>
                   
