@@ -1,0 +1,23 @@
+{
+  "name": "crypto-profit-correlation-matrix",
+  "version": "1.0.0",
+  "description": "used to arbitrage prices",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shishirarora3/crypto-profit-correlation-matrix.git"
+  },
+  "author": "shishir arora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shishirarora3/crypto-profit-correlation-matrix/issues"
+  },
+  "homepage": "https://github.com/shishirarora3/crypto-profit-correlation-matrix#readme",
+  "dependencies": {
+    "node-notifier": "^5.2.1"
+  }
+}

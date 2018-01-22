@@ -1,6 +1,8 @@
+//target Profit margin
+const TARGET_PROFIT = 16.9;
+
 const https = require('https');
-
-
+const notifier = require('node-notifier');
 const CEX_EUR = {hostname: "cex.io", path: "/api/ticker/XRP/EUR", name: "CEX_EUR"};
 const CEX_USD = {hostname: "cex.io", path: "/api/ticker/XRP/USD", name: "CEX_USD"};
 const BITBNS = {hostname: "bitbns.com", path: "/order/getTickerAll", name: "BITBNS"};
@@ -53,9 +55,9 @@ const fetch = function (url) {
     return new Promise(function (resolve, rej) {
         https.get(url, function (res) {
             res.setEncoding('utf8');
-            //console.log('STATUS: ' + res.statusCode);
-            //console.log('HEADERS: ' + JSON.stringify(res.headers));
-            //console.log('res: ' + JSON.stringify(res.headers));
+            console.log('STATUS: ' + res.statusCode);
+            console.log('HEADERS: ' + JSON.stringify(res.headers));
+            console.log('res: ' + JSON.stringify(res.headers));
             res.on('data', function (chunk) {
                 //console.log(chunk);
                 var result = JSON.parse(chunk);
@@ -66,10 +68,18 @@ const fetch = function (url) {
 
 };
 
-const profit = function (sell, buy) {
+const profit = function (sell, buy, message) {
     //console.log(sell, buy);
     var r = (sell - buy) * 100 / buy;
-    return r.toFixed(2)+'%';
+    var p = r.toFixed(2) + '%';
+    if (r > TARGET_PROFIT) {
+        notifier.notify({
+            title: 'Profit: '+ p ,
+            message: message || ""
+        });
+    }
+
+    return p;
 };
 
 
@@ -87,18 +97,18 @@ const print = function (matrix) {
 
     return endPoints.reduce(function (previousValue, e) {
         return previousValue + e.name + '\t|\t';
-    }, '\t\t')+ '\n' + JSON.stringify(matrix)
+    }, '\t\t') + '\n' + JSON.stringify(matrix)
         .replace(/[\[\]]{2}/g, '')
         .split(/\]\,\[/)
         .reduce(function (previousValue, currentValue, i) {
-            return  previousValue + currentValue + '\t|\n'
-                + (i<endPoints.length - 1 ? endPoints[i+1].name : '') + '\t';
-        },endPoints[0].name+'\t')
+            return previousValue + currentValue + '\t|\n'
+                + (i < endPoints.length - 1 ? endPoints[i + 1].name : '') + '\t';
+        }, endPoints[0].name + '\t')
         .replace(/\,/g, '\t|\t')
-        .replace(/\"/g,"");
+        .replace(/\"/g, "");
 };
 
-setInterval(function(){
+setInterval(function () {
     Promise.all(endPoints.map(function (endPoint) {
         return fetch(endPoint)
     })).then(function (res) {
@@ -106,8 +116,14 @@ setInterval(function(){
         const profit_correlation_matrix = SELL_PRICE_PATH.map(
             function (sell, sellIndex) {
                 return BUY_PRICE_PATH.map(function (buy, buyIndex) {
-                    return profit(get(res[sellIndex], sell) * CONVERSION_FACTORS[sellIndex],
-                        get(res[buyIndex], buy) * CONVERSION_FACTORS[buyIndex]
+                    var sp = get(res[sellIndex], sell);
+                    var cp =  get(res[buyIndex], buy);
+                    return profit(
+                        sp * CONVERSION_FACTORS[sellIndex],
+                        cp * CONVERSION_FACTORS[buyIndex],
+                        "Buy at "+ endPoints[buyIndex].name +
+                        " for "+  cp + " & sell at "
+                        + endPoints[sellIndex].name + " for "+ sp
                     );
                 });
             }
@@ -116,7 +132,7 @@ setInterval(function(){
     }).catch(function (error) {
         console.log(error);
     });
-},5000);
+}, 5000);
 
 
 
