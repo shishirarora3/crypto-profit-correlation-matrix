@@ -4,6 +4,8 @@ commands to run;
 
 `npm install && node server.js`
 
+Keep target profit in /config/target.js
+
  <h1>profit correllation matrix</h1>
                   
 <pre/>  Buy     CEX_USD	|	CEX_EUR	|	BITBNS	|	
