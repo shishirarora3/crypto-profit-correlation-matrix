@@ -12,7 +12,8 @@ setInterval(function () {
         console.log(endPoint);
         return HELPERS.fetch(endPoint);
     })).then(function (res) {
-
+        var max_profit = 0;
+        var max_profit_message = "NA";
         const profit_correlation_matrix = END_POINT_CONFIG.SELL_PRICE_PATH.map(
             function (sell, sellIndex) {
                 return END_POINT_CONFIG.BUY_PRICE_PATH.map(function (buy, buyIndex) {
@@ -20,18 +21,23 @@ setInterval(function () {
                         sp = HELPERS.get(res[sellIndex], sell);
                         cp =  HELPERS.get(res[buyIndex], buy);
 
-                    return HELPERS.profit(
+                    const profit =  HELPERS.profit(
                         TARGET_PROFIT,
                         TRANSACTION_CHARGES[buyIndex],
                         sp * END_POINT_CONFIG.CONVERSION_FACTORS[sellIndex],
-                        cp * END_POINT_CONFIG.CONVERSION_FACTORS[buyIndex],
-                        "Buy at "+ ENDPOINTS[buyIndex].name +
-                        " for "+  cp + " & sell at "
-                        + ENDPOINTS[sellIndex].name + " for "+ sp
+                        cp * END_POINT_CONFIG.CONVERSION_FACTORS[buyIndex]
                     );
+                    if( profit>max_profit ){
+                        max_profit = profit;
+                        max_profit_message = "Buy at "+ ENDPOINTS[buyIndex].name +
+                            " for "+  cp + " & sell at "
+                            + ENDPOINTS[sellIndex].name + " for "+ sp
+                    }
+                    return profit;
                 });
             }
         );
+        HELPERS.notify("Max Profit: " + max_profit, max_profit_message);
         console.log(HELPERS.print(ENDPOINTS, profit_correlation_matrix))
     }).catch(function (error) {
         console.log(error);

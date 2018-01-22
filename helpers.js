@@ -38,18 +38,17 @@ module.exports = {
         });
 
     },
-    profit: function (TARGET_PROFIT, TRANSACTION_CHARGE, sell, buy, message) {
+    notify: function (title,message ) {
+        notifier.notify({
+            title: title,
+            message: message || ""
+        });
+    },
+    profit: function (TARGET_PROFIT, TRANSACTION_CHARGE, sell, buy) {
         console.log(sell, buy);
         var r = (sell - buy) * 100 / buy;
         var p = r - TRANSACTION_CHARGE;
         var profitFixed = p.toFixed(2);
-        if (p > TARGET_PROFIT) {
-            notifier.notify({
-                title: 'Profit: '+ profitFixed +'%',
-                message: message || ""
-            });
-        }
-
         return profitFixed;
     },
     print : function (endPoints, matrix) {
