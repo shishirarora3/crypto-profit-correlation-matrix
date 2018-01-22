@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/shishirarora3/crypto-profit-correlation-matrix#readme",
   "dependencies": {
+    "cloudscraper": "^1.4.1",
     "node-notifier": "^5.2.1"
   }
 }
