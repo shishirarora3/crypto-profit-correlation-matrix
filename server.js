@@ -5,6 +5,7 @@ const HELPERS = require('./helpers');
 
 
 const ENDPOINTS = END_POINT_CONFIG.ENDPOINTS;
+const TRANSACTION_CHARGES = END_POINT_CONFIG.TRANSACTION_CHARGES;
 
 setInterval(function () {
     Promise.all(ENDPOINTS.map(function (endPoint) {
@@ -25,6 +26,7 @@ setInterval(function () {
 
                     return HELPERS.profit(
                         TARGET_PROFIT,
+                        TRANSACTION_CHARGES[buyIndex],
                         sp * END_POINT_CONFIG.CONVERSION_FACTORS[sellIndex],
                         cp * END_POINT_CONFIG.CONVERSION_FACTORS[buyIndex],
                         "Buy at "+ ENDPOINTS[buyIndex].name +
@@ -38,7 +40,7 @@ setInterval(function () {
     }).catch(function (error) {
         console.log(error);
     });
-}, 5000);
+}, 10000);
 
 
 

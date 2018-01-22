@@ -1,3 +1,3 @@
 module.exports ={
-    TARGET_PROFIT_PERCENTAGE: 14
+    TARGET_PROFIT_PERCENTAGE: 9
 };

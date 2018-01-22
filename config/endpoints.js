@@ -20,6 +20,10 @@ const SELL_PRICE_PATH = ["ask", "ask", "[1].XRP.sellPrice",
 const BUY_PRICE_PATH = ["bid", "bid", "[1].XRP.buyPrice",
     "XRP"
 ];
+
+const TRANSACTION_CHARGES = [6.2, 6.2, 0,  0.25
+];
+
 const EURO_TO_INR = 78.33;
 const USD_TO_INR = 63.83;
 const CONVERSION_FACTORS = [USD_TO_INR, EURO_TO_INR, 1,
@@ -35,5 +39,6 @@ module.exports = {
     ],
     SELL_PRICE_PATH: SELL_PRICE_PATH,
     BUY_PRICE_PATH: BUY_PRICE_PATH,
-    CONVERSION_FACTORS: CONVERSION_FACTORS
+    CONVERSION_FACTORS: CONVERSION_FACTORS,
+    TRANSACTION_CHARGES: TRANSACTION_CHARGES
 };

@@ -23,7 +23,6 @@ module.exports = {
                     return res?res[e]: res;
                 },
                 obj);
-        //console.log(r);
         return r;
     },
     fetch: function (url) {
@@ -35,27 +34,17 @@ module.exports = {
                     rej(error);
                 }
                 resolve(JSON.parse(body));
-                //res.setEncoding('utf8');
-                //console.log('url: ' + url);
-                //console.log('STATUS: ' + res.statusCode);
-                //console.log('HEADERS: ' + JSON.stringify(res.headers));
-                //console.log('res: ' + JSON.stringify(res.headers));
-                /*res.on('data', function (chunk) {
-                    //console.log(chunk);
-                    var result = JSON.parse(chunk);
-                    resolve(result);
-                });*/
             });
         });
 
     },
-    profit: function (TARGET_PROFIT, sell, buy, message) {
+    profit: function (TARGET_PROFIT, TRANSACTION_CHARGE, sell, buy, message) {
         console.log(sell, buy);
         var r = (sell - buy) * 100 / buy;
-        var p = r.toFixed(2) + '%';
-        if (r > TARGET_PROFIT) {
+        var p = r.toFixed(2) - TRANSACTION_CHARGE;
+        if (p > TARGET_PROFIT) {
             notifier.notify({
-                title: 'Profit: '+ p ,
+                title: 'Profit: '+ p +'%',
                 message: message || ""
             });
         }
@@ -79,14 +68,7 @@ module.exports = {
 };
 
 
-/**
- *  profit correllation matrix
- *             CEX-USD CEX-EUR KOINEX BITBNS
- *     CEX-USD   0
- *     CEX-EUR
- *     KOINEX
- *     BITBNS
- */
+
 
 
 
