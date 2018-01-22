@@ -40,7 +40,7 @@ setInterval(function () {
     }).catch(function (error) {
         console.log(error);
     });
-}, 10000);
+}, 20000);
 
 
 

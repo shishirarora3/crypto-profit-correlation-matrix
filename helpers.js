@@ -41,10 +41,10 @@ module.exports = {
     profit: function (TARGET_PROFIT, TRANSACTION_CHARGE, sell, buy, message) {
         console.log(sell, buy);
         var r = (sell - buy) * 100 / buy;
-        var p = r.toFixed(2) - TRANSACTION_CHARGE;
+        var p = r - TRANSACTION_CHARGE;
         if (p > TARGET_PROFIT) {
             notifier.notify({
-                title: 'Profit: '+ p +'%',
+                title: 'Profit: '+ p.toFixed(2) +'%',
                 message: message || ""
             });
         }
