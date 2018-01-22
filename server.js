@@ -1,5 +1,5 @@
 //target Profit margin
-const TARGET_PROFIT = require("./config/target").TARGET_PROFT_PERCENTAGE;
+const TARGET_PROFIT = require("./config/target").TARGET_PROFIT_PERCENTAGE;
 const END_POINT_CONFIG = require("./config/endpoints");
 const HELPERS = require('./helpers');
 
