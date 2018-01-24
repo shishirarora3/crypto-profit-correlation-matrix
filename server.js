@@ -9,7 +9,6 @@ const TRANSACTION_CHARGES = END_POINT_CONFIG.TRANSACTION_CHARGES;
 
 setInterval(function () {
     Promise.all(ENDPOINTS.map(function (endPoint) {
-        console.log(endPoint);
         return HELPERS.fetch(endPoint);
     })).then(function (res) {
         var max_profit = 0;
@@ -17,16 +16,19 @@ setInterval(function () {
         const profit_correlation_matrix = END_POINT_CONFIG.SELL_PRICE_PATH.map(
             function (sell, sellIndex) {
                 return END_POINT_CONFIG.BUY_PRICE_PATH.map(function (buy, buyIndex) {
-                    var sp,cp;
+                    var sp,cp,profit;
+                    if(sellIndex === buyIndex){
+                        return 0.00;
+                    }else{
                         sp = HELPERS.get(res[sellIndex], sell);
                         cp =  HELPERS.get(res[buyIndex], buy);
-
-                    const profit =  HELPERS.profit(
-                        TARGET_PROFIT,
-                        TRANSACTION_CHARGES[buyIndex],
-                        sp * END_POINT_CONFIG.CONVERSION_FACTORS[sellIndex],
-                        cp * END_POINT_CONFIG.CONVERSION_FACTORS[buyIndex]
-                    );
+                        profit =  HELPERS.profit(
+                            TARGET_PROFIT,
+                            TRANSACTION_CHARGES[buyIndex],
+                            sp * END_POINT_CONFIG.CONVERSION_FACTORS[sellIndex],
+                            cp * END_POINT_CONFIG.CONVERSION_FACTORS[buyIndex]
+                        );
+                    }
                     if( profit>max_profit ){
                         max_profit = profit;
                         max_profit_message = "Buy at "+ ENDPOINTS[buyIndex].name +
@@ -42,7 +44,7 @@ setInterval(function () {
     }).catch(function (error) {
         console.log(error);
     });
-}, 20000);
+}, 40000);
 
 
 
