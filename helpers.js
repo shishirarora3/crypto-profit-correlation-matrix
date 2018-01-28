@@ -38,7 +38,7 @@ module.exports = {
     profit: function (TARGET_PROFIT, TRANSACTION_CHARGE, sell, buy) {
         var r = (sell - buy) * 100 / buy;
         var p = r - TRANSACTION_CHARGE;
-        if(Math.abs(p)>99){
+        if(Math.abs(p)>20){
             p=0;
         }
         var profitFixed = p.toFixed(2);

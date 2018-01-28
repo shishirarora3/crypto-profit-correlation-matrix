@@ -7,7 +7,8 @@ const HELPERS = require('./helpers');
 const ENDPOINTS = END_POINT_CONFIG.ENDPOINTS;
 const TRANSACTION_CHARGES = END_POINT_CONFIG.TRANSACTION_CHARGES;
 
-setInterval(function () {
+
+const cb = function(){
     Promise.all(ENDPOINTS.map(function (endPoint) {
         return HELPERS.fetch(endPoint);
     })).then(function (res) {
@@ -18,14 +19,17 @@ setInterval(function () {
                 return END_POINT_CONFIG.BUY_PRICE_PATH.map(function (buy, buyIndex) {
                     var sp,cp,profit;
 
-                        sp = HELPERS.get(res[sellIndex], sell);
-                        cp =  HELPERS.get(res[buyIndex], buy);
-                        profit =  HELPERS.profit(
-                            TARGET_PROFIT,
-                            TRANSACTION_CHARGES[buyIndex],
-                            sp * END_POINT_CONFIG.CONVERSION_FACTORS[sellIndex],
-                            cp * END_POINT_CONFIG.CONVERSION_FACTORS[buyIndex]
-                        );
+                    sp = HELPERS.get(res[sellIndex], sell);
+                    cp =  HELPERS.get(res[buyIndex], buy);
+                    if(buy === "LTC-INR.highest_bid"){
+                        console.log(sp, cp, buyIndex)
+                    }
+                    profit =  HELPERS.profit(
+                        TARGET_PROFIT,
+                        TRANSACTION_CHARGES[buyIndex],
+                        sp * END_POINT_CONFIG.CONVERSION_FACTORS[sellIndex],
+                        cp * END_POINT_CONFIG.CONVERSION_FACTORS[buyIndex]
+                    );
 
                     if( profit>max_profit ){
                         max_profit = profit;
@@ -42,7 +46,10 @@ setInterval(function () {
     }).catch(function (error) {
         console.log(error);
     });
-}, 40000);
+};
+
+cb();
+setInterval(cb, 40000);
 
 
 
