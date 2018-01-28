@@ -24,7 +24,7 @@ const cb = function(){
                     if(buy === "LTC-INR.highest_bid"){
                         console.log(sp, cp, buyIndex)
                     }
-                    profit =  HELPERS.profit(
+                    profit =  ENDPOINTS[buyIndex].name === ENDPOINTS[sellIndex].name ? (0).toFixed(2) : HELPERS.profit(
                         TARGET_PROFIT,
                         TRANSACTION_CHARGES[buyIndex],
                         sp * END_POINT_CONFIG.CONVERSION_FACTORS[sellIndex],

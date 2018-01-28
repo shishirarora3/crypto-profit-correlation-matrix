@@ -9,6 +9,16 @@ const CEX_EP = function(crypto, fiat){
     };
 };
 
+const QUOINE_EP = function(crypto, fiat, id){
+    const name = "QU_" + crypto + "_" + fiat;
+    return {
+        url: "https://api.quoine.com/products/"+id,
+        name: name.slice(0,11),
+        method: 'GET',
+        encoding: "utf8"
+    };
+};
+
 const BITBNS_EP = function(crypto){
     const name = "BITBNS_"+crypto;
     return {
@@ -38,7 +48,10 @@ const KOINEX_EP = function(crypto){
         encoding: "utf8"
     };
 };
+
+
 const ENDPOINTS_CONFIG = {
+    QUOINE_XRP : QUOINE_EP("XRP","USD", 84),
     CEX_XRP_EUR: CEX_EP("XRP", "EUR"),
     CEX_DASH_EUR: CEX_EP("DASH", "EUR"),
     CEX_BCH_EUR: CEX_EP("BCH", "EUR"),
@@ -53,34 +66,43 @@ const ENDPOINTS_CONFIG = {
     COINOME_BCH: COINOME_EP("BCH"),
     COINOME_DASH: COINOME_EP("DASH"),
     //////
-    KOINEX_BCH: KOINEX_EP("BCH"),
+
+    /*KOINEX_BCH: KOINEX_EP("BCH"),
     KOINEX_XRP: KOINEX_EP("XRP"),
-    KOINEX_ETH: KOINEX_EP("ETH"),
+    KOINEX_ETH: KOINEX_EP("ETH"),*/
 };
 
-const SELL_PRICE_PATH = ["ask","ask", "ask","ask", "ask", "ask","ask",
+const SELL_PRICE_PATH = ["market_ask",
+    "ask","ask", "ask","ask", "ask", "ask","ask",
     "[1].XRP.sellPrice","[4].ETH.sellPrice",
     "BCH-INR.lowest_ask","DASH-INR.lowest_ask",
-    "BCH","XRP","ETH"
+    /*"BCH","XRP","ETH"*/
 ];
-const BUY_PRICE_PATH = ["bid","bid", "bid","bid", "bid","bid","bid",
+const BUY_PRICE_PATH = ["market_bid",
+    "bid","bid", "bid","bid", "bid","bid","bid",
     "[1].XRP.buyPrice","[4].ETH.buyPrice",
     "BCH-INR.highest_bid","DASH-INR.highest_bid",
-    "BCH","XRP","ETH"
+    /*"BCH","XRP","ETH"*/
 ];
 
-const TRANSACTION_CHARGES = [ 6.2, 6.2, 6.2, 6.2, 6.2, 6.2,6.2,
+const TRANSACTION_CHARGES = [
+    6.2,
+    6.2, 6.2, 6.2, 6.2, 6.2, 6.2,6.2,
     0,0,
     0,0,
-    0.25,0.25,0.25
+    /*0.25,0.25,0.25*/
 ];
 
 const EURO_TO_INR = 78.33;
 const USD_TO_INR = 63.83;
-const CONVERSION_FACTORS = [ EURO_TO_INR, EURO_TO_INR,EURO_TO_INR, USD_TO_INR,USD_TO_INR,USD_TO_INR,USD_TO_INR,
+const JPY_TO_INR= 0.58;
+const SGD_TO_INR= 48.65;
+const CONVERSION_FACTORS = [
+    USD_TO_INR,
+    EURO_TO_INR, EURO_TO_INR,EURO_TO_INR, USD_TO_INR,USD_TO_INR,USD_TO_INR,USD_TO_INR,
     1,1,
     1, 1,
-    1,1,1
+    /*1,1,1*/
 ];
 
 
