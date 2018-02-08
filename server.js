@@ -18,13 +18,16 @@ const cb = function(){
             function (sell, sellIndex) {
                 return END_POINT_CONFIG.BUY_PRICE_PATH.map(function (buy, buyIndex) {
                     var sp,cp,profit;
+                    var _resSell = res[sellIndex];
+                    var _resBuy = res[buyIndex];
 
-                    sp = HELPERS.get(res[sellIndex], sell);
-                    cp =  HELPERS.get(res[buyIndex], buy);
-                    if(buy === "LTC-INR.highest_bid"){
+                    sp = HELPERS.get(_resSell, sell);
+                    cp =  HELPERS.get(_resBuy, buy);
+                    /*if(buy === "[5].XLM.sellPrice"){
                         console.log(sp, cp, buyIndex)
-                    }
-                    profit =  ENDPOINTS[buyIndex].name === ENDPOINTS[sellIndex].name ? (0).toFixed(2) : HELPERS.profit(
+                    }*/
+                    profit =  ENDPOINTS[buyIndex].name === ENDPOINTS[sellIndex].name ||
+                    ENDPOINTS[buyIndex].crypto !== ENDPOINTS[sellIndex].crypto ? (0).toFixed(2) : HELPERS.profit(
                         TARGET_PROFIT,
                         TRANSACTION_CHARGES[buyIndex],
                         sp * END_POINT_CONFIG.CONVERSION_FACTORS[sellIndex],
@@ -49,7 +52,7 @@ const cb = function(){
 };
 
 cb();
-setInterval(cb, 40000);
+setInterval(cb, 100000);
 
 
 
