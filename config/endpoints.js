@@ -1,27 +1,11 @@
 const _ = require("lodash");
 
-const CHANGELLY_URL = "https://changelly.com/api/currencies";
-
 const ffMap = {
     EUR: 80.19,
     USD: 64.99,
     JPY: 0.58
 };
 
-const getEP = function(exchange, crypto){
-    const name = exchange.slice(0,4) + "_"+crypto.slice(0,3);
-    return {
-        url: "https://coinhero.in/exchanges/"+ exchange+ "/coins/ticker.json",
-        method: 'GET',
-        encoding: "utf8",
-        crypto: crypto,
-        sell: crypto+".price",
-        buy: crypto+".price",
-        conv: 0.5,
-        ff: 1,
-        name: _.toUpper(name)
-    };
-};
 const CEX_EP = function(crypto, fiat){
     const name = "C_"+crypto+"_"+fiat;
     return {
@@ -37,52 +21,81 @@ const CEX_EP = function(crypto, fiat){
     };
 };
 
-const QUOINE_EP = function(crypto, fiat, id){
-    const name = "Q_" + crypto + "_" + fiat;
+const BITBNS_CONF = {
+    BTC: 0,
+    XRP: 1,
+    ETH: 4,
+    XLM: 5,
+    LTC: 8,
+    DASH: 10,
+    BCH : 12
+};
+const BITBNS_EP = function(crypto){
+    const name = "BITB_"+crypto;
     return {
-        url: "https://api.quoine.com/products/"+id,
+        url: "http://bitbns.com/order/getTickerAll",
         name: name.slice(0,11),
         method: 'GET',
         encoding: "utf8",
         crypto: crypto,
-        conv: 6.5,
-        ff: ffMap[fiat],
-        sell: "market_bid",
-        buy: "market_ask"
+        sell: "["+BITBNS_CONF[crypto]+"]."+crypto+".buyPrice",
+        buy: "["+BITBNS_CONF[crypto]+"]."+crypto+".sellPrice",
+        conv: 0.5,
+        ff: 1
     };
 };
 
-const BITBNS_CONF = {
-    XRP: 1,
-    ETH: 4,
-    XLM: 5
+const KOINEX_EP = function(crypto){
+    const name = "KOIN_"+crypto;
+    return {
+        url: "http://koinex.in/api/dashboards/ticker",
+        name: name.slice(0,11),
+        method: 'GET',
+        encoding: "utf8",
+        crypto: crypto,
+        sell: crypto,
+        buy: crypto,
+        conv: 0.25,
+        ff: 1
+    };
 };
 
-const EXCHANGE_CRYPTO_MAP = {
-    bitbns: ["XRP", "XLM"],
-    koinex: ["XRP"]
-};
 
-
-const ENDPOINTS_CONFIG_INT = {
+const ENDPOINTS_CONFIG = {
 
     CEX_XRP_EUR: CEX_EP("XRP", "EUR"),
-    CEX_XLM_EUR: CEX_EP("XLM", "EUR"),
-    CEX_XLM_USD: CEX_EP("XLM", "USD"),
+    CEX_XLM_EUR: CEX_EP("XLM", "EUR"),/*
+    CEX_DASH_EUR: CEX_EP("DASH", "EUR"),
+    CEX_BCH_EUR: CEX_EP("BCH", "EUR"),
 
-    CEX_XRP_USD: CEX_EP("XRP", "USD")
+    CEX_ETH_EUR: CEX_EP("ETH", "EUR"),
+    CEX_BTC_EUR: CEX_EP("BTC", "EUR"),*/
 
+
+    CEX_XRP_USD: CEX_EP("XRP", "USD"),
+    CEX_XLM_USD: CEX_EP("XLM", "USD"),/*
+    CEX_DASH_USD: CEX_EP("DASH", "USD"),
+    CEX_BCH_USD: CEX_EP("BCH", "USD"),
+    CEX_ETH_USD: CEX_EP("ETH", "USD"),
+
+    CEX_BTC_USD: CEX_EP("BTC", "USD"),*/
+
+
+    BITBNS_XRP: BITBNS_EP("XRP"),/*
+    BITBNS_ETH: BITBNS_EP("ETH"),*/
+    BITBNS_XLM: BITBNS_EP("XLM"),/*
+    BITBNS_BTC: BITBNS_EP("BTC"),
+    BITBNS_LTC: BITBNS_EP("LTC"),
+    BITBNS_DASH: BITBNS_EP("DASH"),
+    BITBNS_BCH: BITBNS_EP("BCH"),*/
+    /*
+        KOINEX_XRP: KOINEX_EP("XRP")
+        KOINEX_ETH: KOINEX_EP("ETH"),
+        KOINEX_BCH: KOINEX_EP("BCH")*/
 };
 
 
-const ENDPOINTS_CONFIG = (function () {
-    Object.keys(EXCHANGE_CRYPTO_MAP).forEach(function (k) {
-        EXCHANGE_CRYPTO_MAP[k].forEach(function (cry) {
-            ENDPOINTS_CONFIG_INT[k+"_"+cry]=getEP(k,cry);
-        });
-    });
-    return ENDPOINTS_CONFIG_INT;
-})();
+
 
 
 
