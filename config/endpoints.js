@@ -3,8 +3,8 @@ const _ = require("lodash");
 const CHANGELLY_URL = "https://changelly.com/api/currencies";
 
 const ffMap = {
-    EUR: 79.63,
-    USD: 63.83,
+    EUR: 80.19,
+    USD: 64.99,
     JPY: 0.58
 };
 
@@ -59,26 +59,18 @@ const BITBNS_CONF = {
 };
 
 const EXCHANGE_CRYPTO_MAP = {
-    bitbns: ["XRP", "ETH", "XLM"],
-    koinex: ["XRP", "ETH", "BCH"],
-    zebpay: ["XRP", "BCH"],
-    coinome: ["BCH", "DASH"],
-    coindelta: ["XRP", "ETH", "BCH"]
+    bitbns: ["XRP", "XLM"],
+    koinex: ["XRP"]
 };
 
 
 const ENDPOINTS_CONFIG_INT = {
-    QUOINE_XRP: QUOINE_EP("XRP", "USD", 84),
 
     CEX_XRP_EUR: CEX_EP("XRP", "EUR"),
-    CEX_DASH_EUR: CEX_EP("DASH", "EUR"),
-    CEX_BCH_EUR: CEX_EP("BCH", "EUR"),
     CEX_XLM_EUR: CEX_EP("XLM", "EUR"),
-    CEX_ETH_EUR: CEX_EP("ETH", "EUR"),
-    CEX_XRP_USD: CEX_EP("XRP", "USD"),
-    CEX_DASH_USD: CEX_EP("DASH", "USD"),
-    CEX_BCH_USD: CEX_EP("BCH", "USD"),
-    CEX_ETH_USD: CEX_EP("ETH", "USD")
+    CEX_XLM_USD: CEX_EP("XLM", "USD"),
+
+    CEX_XRP_USD: CEX_EP("XRP", "USD")
 
 };
 

@@ -23,9 +23,6 @@ const cb = function(){
 
                     sp = HELPERS.get(_resSell, sell);
                     cp =  HELPERS.get(_resBuy, buy);
-                    /*if(buy === "[5].XLM.sellPrice"){
-                        console.log(sp, cp, buyIndex)
-                    }*/
                     profit =  ENDPOINTS[buyIndex].name === ENDPOINTS[sellIndex].name ||
                     ENDPOINTS[buyIndex].crypto !== ENDPOINTS[sellIndex].crypto ? (0).toFixed(2) : HELPERS.profit(
                         TARGET_PROFIT,
