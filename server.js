@@ -7,6 +7,7 @@ const HELPERS = require('./helpers');
 const ENDPOINTS = END_POINT_CONFIG.ENDPOINTS;
 const TRANSACTION_CHARGES = END_POINT_CONFIG.TRANSACTION_CHARGES;
 
+//http://free.currencyconverterapi.com/api/v3/convert?q=EUR_INR&compact=ultra => integrate this
 
 const cb = function(){
     Promise.all(ENDPOINTS.map(function (endPoint) {
@@ -41,7 +42,7 @@ const cb = function(){
                 });
             }
         );
-        max_profit>3 && HELPERS.notify("Max Profit: " + max_profit, max_profit_message);
+        max_profit>4 && HELPERS.notify("Max Profit: " + max_profit, max_profit_message);
         console.log(HELPERS.print(ENDPOINTS, profit_correlation_matrix))
     }).catch(function (error) {
         console.log(error);

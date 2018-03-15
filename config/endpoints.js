@@ -1,8 +1,8 @@
 const _ = require("lodash");
 
 const ffMap = {
-    EUR: 80.19,
-    USD: 64.99,
+    EUR: 80.15,
+    USD: 64.97,
     JPY: 0.58
 };
 
@@ -64,30 +64,27 @@ const KOINEX_EP = function(crypto){
 const ENDPOINTS_CONFIG = {
 
     CEX_XRP_EUR: CEX_EP("XRP", "EUR"),
-    CEX_XLM_EUR: CEX_EP("XLM", "EUR"),/*
+    CEX_XLM_EUR: CEX_EP("XLM", "EUR"),
     CEX_DASH_EUR: CEX_EP("DASH", "EUR"),
     CEX_BCH_EUR: CEX_EP("BCH", "EUR"),
 
     CEX_ETH_EUR: CEX_EP("ETH", "EUR"),
-    CEX_BTC_EUR: CEX_EP("BTC", "EUR"),*/
 
 
     CEX_XRP_USD: CEX_EP("XRP", "USD"),
-    CEX_XLM_USD: CEX_EP("XLM", "USD"),/*
+    CEX_XLM_USD: CEX_EP("XLM", "USD"),
     CEX_DASH_USD: CEX_EP("DASH", "USD"),
     CEX_BCH_USD: CEX_EP("BCH", "USD"),
     CEX_ETH_USD: CEX_EP("ETH", "USD"),
 
-    CEX_BTC_USD: CEX_EP("BTC", "USD"),*/
 
 
-    BITBNS_XRP: BITBNS_EP("XRP"),/*
-    BITBNS_ETH: BITBNS_EP("ETH"),*/
-    BITBNS_XLM: BITBNS_EP("XLM"),/*
-    BITBNS_BTC: BITBNS_EP("BTC"),
+    BITBNS_XRP: BITBNS_EP("XRP"),
+    BITBNS_XLM: BITBNS_EP("XLM"),
     BITBNS_LTC: BITBNS_EP("LTC"),
     BITBNS_DASH: BITBNS_EP("DASH"),
-    BITBNS_BCH: BITBNS_EP("BCH"),*/
+    BITBNS_BCH: BITBNS_EP("BCH"),
+    BITBNS_ETH: BITBNS_EP("ETH")
     /*
         KOINEX_XRP: KOINEX_EP("XRP")
         KOINEX_ETH: KOINEX_EP("ETH"),
