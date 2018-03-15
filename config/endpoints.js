@@ -28,6 +28,7 @@ const BITBNS_CONF = {
     XLM: 5,
     LTC: 8,
     DASH: 10,
+    DOGE: 11,
     BCH : 12
 };
 const BITBNS_EP = function(crypto){
@@ -65,26 +66,18 @@ const ENDPOINTS_CONFIG = {
 
     CEX_XRP_EUR: CEX_EP("XRP", "EUR"),
     CEX_XLM_EUR: CEX_EP("XLM", "EUR"),
-    CEX_DASH_EUR: CEX_EP("DASH", "EUR"),
     CEX_BCH_EUR: CEX_EP("BCH", "EUR"),
-
-    CEX_ETH_EUR: CEX_EP("ETH", "EUR"),
 
 
     CEX_XRP_USD: CEX_EP("XRP", "USD"),
     CEX_XLM_USD: CEX_EP("XLM", "USD"),
-    CEX_DASH_USD: CEX_EP("DASH", "USD"),
     CEX_BCH_USD: CEX_EP("BCH", "USD"),
-    CEX_ETH_USD: CEX_EP("ETH", "USD"),
 
 
 
     BITBNS_XRP: BITBNS_EP("XRP"),
     BITBNS_XLM: BITBNS_EP("XLM"),
-    BITBNS_LTC: BITBNS_EP("LTC"),
-    BITBNS_DASH: BITBNS_EP("DASH"),
-    BITBNS_BCH: BITBNS_EP("BCH"),
-    BITBNS_ETH: BITBNS_EP("ETH")
+    BITBNS_LTC: BITBNS_EP("LTC")
     /*
         KOINEX_XRP: KOINEX_EP("XRP")
         KOINEX_ETH: KOINEX_EP("ETH"),
