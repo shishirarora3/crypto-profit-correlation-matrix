@@ -42,7 +42,7 @@ const cb = function(){
                 });
             }
         );
-        max_profit>4 && HELPERS.notify("Max Profit: " + max_profit, max_profit_message);
+        HELPERS.notify("Max Profit: " + max_profit, max_profit_message);
         console.log(HELPERS.print(ENDPOINTS, profit_correlation_matrix))
     }).catch(function (error) {
         console.log(error);
