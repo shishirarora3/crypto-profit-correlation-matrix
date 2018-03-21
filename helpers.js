@@ -50,9 +50,9 @@ module.exports = {
         var profitFixed = p.toFixed(2);
         return profitFixed;
     },
-    print : function (endPoints, matrix) {
+    print : function (buys, endPoints, matrix) {
 
-        return endPoints.reduce(function (previousValue, e) {
+        return buys.reduce(function (previousValue, e) {
             return previousValue + e.name + '\t|\t';
         }, '\t\t') + '\n' + JSON.stringify(matrix)
             .replace(/[\[\]]{2}/g, '')
