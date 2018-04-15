@@ -19,8 +19,8 @@
       <file leaf-file-name="helpers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helpers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+            <state relative-caret-position="266">
+              <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -28,8 +28,8 @@
       <file leaf-file-name="endpoints.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/endpoints.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
-              <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+            <state relative-caret-position="-753">
+              <caret line="78" column="49" lean-forward="true" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -46,8 +46,8 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+            <state relative-caret-position="280">
+              <caret line="31" column="89" selection-start-line="31" selection-start-column="89" selection-end-line="31" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -62,8 +62,10 @@
       <find>SELL_PRICE_PATH</find>
       <find>ENDPOINTS</find>
       <find>TARGET_PROFIT</find>
-      <find>max_profit</find>
       <find>BITBNS_CONF</find>
+      <find>TRANSACTION_CHARGE</find>
+      <find>max_profit</find>
+      <find>buy_eligible</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -277,7 +279,7 @@
       <workItem from="1521057524394" duration="6319000" />
       <workItem from="1521122840080" duration="2650000" />
       <workItem from="1521583288212" duration="5387000" />
-      <workItem from="1523805927869" duration="8134000" />
+      <workItem from="1523805927869" duration="9815000" />
     </task>
     <task id="LOCAL-00001" summary="jj">
       <created>1520629511352</created>
@@ -314,11 +316,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521134727332</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="generic">
+      <created>1523821131209</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1523821131209</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58966000" />
+    <option name="totallyTimeSpent" value="60647000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -333,7 +342,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.48727274" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.53090906" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.20969696" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info id="Image Layers" order="2" />
@@ -433,19 +442,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="jj" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="generic" />
+    <option name="LAST_COMMIT_MESSAGE" value="generic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <condition expression="&quot;&quot;+p == &quot;NaN&quot;" language="JavaScript" />
-          <url>file://$PROJECT_DIR$/helpers.js</url>
-          <line>50</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="20" />
     </breakpoint-manager>
   </component>
@@ -718,22 +719,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+        <state relative-caret-position="266">
+          <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/endpoints.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+        <state relative-caret-position="-753">
+          <caret line="78" column="49" lean-forward="true" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        <state relative-caret-position="280">
+          <caret line="31" column="89" selection-start-line="31" selection-start-column="89" selection-end-line="31" selection-end-column="89" />
         </state>
       </provider>
     </entry>

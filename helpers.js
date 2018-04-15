@@ -47,7 +47,7 @@ module.exports = {
     },
     profit: function (TARGET_PROFIT, TRANSACTION_CHARGE, sell, buy) {
         var r = (sell - buy) * 100 / buy;
-        var p = r - TRANSACTION_CHARGE;
+        var p = r - TRANSACTION_CHARGE; //6.5
         var profitFixed = p.toFixed(2);
         return profitFixed;
     },

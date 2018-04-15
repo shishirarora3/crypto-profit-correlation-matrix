@@ -63,8 +63,8 @@ const finalConf =function (rej, res){
 
             const BITF_EP = function(crypto, fiat){
                 const name = "BITF_"+crypto+"_"+fiat;
-                const buy_eligible = false;
-                const sell_eligible = true;
+                const buy_eligible = true;
+                const sell_eligible = false;
                 return {
                     url: "https://api.bitfinex.com/v2/ticker/t"+crypto+fiat,
                     name: name.slice(0,11),
@@ -74,7 +74,7 @@ const finalConf =function (rej, res){
                     sell: "[0]",
                     buy:"[2]",
                     ff: ffMap[fiat],
-                    conv: 6.5,
+                    conv: 0.5,
                     buy_eligible: buy_eligible,
                     sell_eligible: sell_eligible,
                     index: index++
@@ -85,8 +85,8 @@ const finalConf =function (rej, res){
 
             const BITBNS_EP = function(crypto){
                 const name = "BITB_"+crypto;
-                const buy_eligible = true;
-                const sell_eligible = false;
+                const buy_eligible = false;
+                const sell_eligible = true;
                 return {
                     url: "http://bitbns.com/order/getTickerAll",
                     name: name.slice(0,11),

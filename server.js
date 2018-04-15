@@ -11,7 +11,7 @@ finalConf().then(function(END_POINT_CONFIG){
         Promise.all(ENDPOINTS.map(function (endPoint) {
             return HELPERS.fetch(endPoint);
         })).then(function (res) {
-            var max_profit = 0;
+            var max_profit=-999;
             var max_profit_message = "NA";
             const profit_correlation_matrix = END_POINT_CONFIG.SELLS.map(
                 function (sell) {
@@ -19,7 +19,6 @@ finalConf().then(function(END_POINT_CONFIG){
                     console.log('sellIndex' +sellIndex);
                     return END_POINT_CONFIG.BUYS.map(function (buy) {
                         var buyIndex = buy.index;
-                        console.log('buyIndex' +buyIndex);
                         var sp,cp,profit;
                         var _resSell = res[sellIndex];
                         var _resBuy = res[buyIndex];
@@ -30,7 +29,7 @@ finalConf().then(function(END_POINT_CONFIG){
                             return 0;
                         }
                         profit =  ENDPOINTS[buyIndex].name === ENDPOINTS[sellIndex].name ||
-                        ENDPOINTS[buyIndex].crypto !== ENDPOINTS[sellIndex].crypto ? (0).toFixed(2) : HELPERS.profit(
+                        ENDPOINTS[buyIndex].crypto !== ENDPOINTS[sellIndex].crypto ? -999 : HELPERS.profit(
                             TARGET_PROFIT,
                             TRANSACTION_CHARGES[buyIndex],
                             sp * END_POINT_CONFIG.CONVERSION_FACTORS[sellIndex],
