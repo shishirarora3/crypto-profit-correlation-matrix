@@ -5,6 +5,7 @@ var cloudscraper = require('cloudscraper');
 
 module.exports = {
     get: function (obj, path) {
+
         var r = path
             .split(/[\.\[\]]/)
             .filter(function (e) {
