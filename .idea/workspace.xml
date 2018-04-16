@@ -4,7 +4,6 @@
     <list default="true" id="e7d28300-1d2b-429c-8bdd-45b373b4254a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/endpoints.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/endpoints.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/helpers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +18,8 @@
       <file leaf-file-name="helpers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helpers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+            <state relative-caret-position="795">
+              <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -28,8 +27,8 @@
       <file leaf-file-name="endpoints.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/endpoints.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-753">
-              <caret line="78" column="49" lean-forward="true" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
+            <state relative-caret-position="50">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
             </state>
           </provider>
         </entry>
@@ -46,8 +45,8 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="31" column="89" selection-start-line="31" selection-start-column="89" selection-end-line="31" selection-end-column="89" />
+            <state relative-caret-position="326">
+              <caret line="42" column="62" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -64,15 +63,15 @@
       <find>TARGET_PROFIT</find>
       <find>BITBNS_CONF</find>
       <find>TRANSACTION_CHARGE</find>
-      <find>max_profit</find>
       <find>buy_eligible</find>
+      <find>max_profit</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="reverse-arbitrage" />
       </map>
     </option>
   </component>
@@ -102,10 +101,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="20" />
-    <option name="y" value="43" />
-    <option name="width" value="1400" />
-    <option name="height" value="753" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="813" />
   </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="1" />
@@ -279,7 +277,7 @@
       <workItem from="1521057524394" duration="6319000" />
       <workItem from="1521122840080" duration="2650000" />
       <workItem from="1521583288212" duration="5387000" />
-      <workItem from="1523805927869" duration="9815000" />
+      <workItem from="1523805927869" duration="13363000" />
     </task>
     <task id="LOCAL-00001" summary="jj">
       <created>1520629511352</created>
@@ -323,17 +321,23 @@
       <option name="project" value="LOCAL" />
       <updated>1523821131209</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="arbitrage from bitfinex to bitbns">
+      <created>1523829812484</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1523829812484</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60647000" />
+    <option name="totallyTimeSpent" value="64195000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16560958" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.16560958" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -342,7 +346,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.48727274" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.20969696" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.47757575" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info id="Image Layers" order="2" />
@@ -365,36 +369,36 @@
       <window_info anchor="right" id="Theme Preview" order="3" />
     </layout>
     <layout-to-restore>
-      <window_info id="Designer" order="3" />
+      <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info id="Image Layers" order="5" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32969698" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Quokka" order="12" weight="0.41958886" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.48727274" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="bottom" id="Quokka" order="12" weight="0.41958886" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info id="npm" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" visible="true" weight="0.2648126" />
+      <window_info id="npm" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32969698" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32406288" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17054264" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16560958" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3369697" />
+      <window_info anchor="right" id="Capture Analysis" order="8" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,11 +447,12 @@
     <MESSAGE value="jj" />
     <MESSAGE value="updates" />
     <MESSAGE value="generic" />
-    <option name="LAST_COMMIT_MESSAGE" value="generic" />
+    <MESSAGE value="arbitrage from bitfinex to bitbns" />
+    <option name="LAST_COMMIT_MESSAGE" value="arbitrage from bitfinex to bitbns" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="20" />
+      <option name="time" value="24" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -717,24 +722,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers.js">
+    <entry file="file://$PROJECT_DIR$/config/endpoints.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+        <state relative-caret-position="50">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/endpoints.js">
+    <entry file="file://$PROJECT_DIR$/helpers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-753">
-          <caret line="78" column="49" lean-forward="true" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
+        <state relative-caret-position="795">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="31" column="89" selection-start-line="31" selection-start-column="89" selection-end-line="31" selection-end-column="89" />
+        <state relative-caret-position="326">
+          <caret line="42" column="62" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
         </state>
       </provider>
     </entry>

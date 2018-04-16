@@ -74,7 +74,7 @@ const finalConf =function (rej, res){
                     sell: "[0]",
                     buy:"[2]",
                     ff: ffMap[fiat],
-                    conv: 0.5,
+                    conv: 1,
                     buy_eligible: buy_eligible,
                     sell_eligible: sell_eligible,
                     index: index++

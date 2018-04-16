@@ -36,7 +36,7 @@ finalConf().then(function(END_POINT_CONFIG){
                             cp * END_POINT_CONFIG.CONVERSION_FACTORS[buyIndex]
                         );
 
-                        if( profit>max_profit ){
+                        if( +profit>+max_profit ){
                             max_profit = profit;
                             max_profit_message = "Buy at "+ ENDPOINTS[buyIndex].name +
                                 " for "+  cp + " & sell at "
