@@ -16,7 +16,6 @@ finalConf().then(function(END_POINT_CONFIG){
             const profit_correlation_matrix = END_POINT_CONFIG.SELLS.map(
                 function (sell) {
                     var sellIndex = sell.index;
-                    console.log('sellIndex' +sellIndex);
                     return END_POINT_CONFIG.BUYS.map(function (buy) {
                         var buyIndex = buy.index;
                         var sp,cp,profit;
@@ -46,8 +45,8 @@ finalConf().then(function(END_POINT_CONFIG){
                     });
                 }
             );
-            
-            console.log(HELPERS.print(END_POINT_CONFIG.BUYS, ENDPOINTS, profit_correlation_matrix));
+    
+            //console.log(HELPERS.print(END_POINT_CONFIG.BUYS, ENDPOINTS, profit_correlation_matrix));
             if(max_profit>3) {
                 HELPERS.notify("Max Profit: " + max_profit, max_profit_message);
             }else{
