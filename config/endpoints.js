@@ -1,30 +1,11 @@
 const _ = require("lodash");
 const HELPERS = require('../helpers');
 
+const ARBITRAGE = process.env.ARBITRAGE;
+
 let index = 0;
-let ffMap = {
-    EUR: 79.88,
-    USD: 65.24,
-    JPY: 0.58
-};
-let BITBNS_CONF = {
-    BTC: 0,
-    XRP: 1,
-    NEO:2,
-    GAS:3,
-    ETH: 4,
-    XLM: 5,
-    LTC: 8,
-    DASH: 10,
-    DOGE: 11,
-    BCH : 12,
-    TRX:14,
-    ETN:15,
-    ONT: 16,
-    ZIL: 17,
-    EOS: 18,
-    ADA: 22
-};
+let ffMap = {};
+let BITBNS_CONF = {};
 
 
 const finalConf =function (rej, res){
@@ -64,8 +45,7 @@ const finalConf =function (rej, res){
 
             const BITF_EP = function(crypto, fiat){
                 const name = "BITF_"+crypto+"_"+fiat;
-                const buy_eligible = true;
-                const sell_eligible = false;
+                const buy_eligible = ARBITRAGE;
                 return {
                     url: "https://api.bitfinex.com/v2/ticker/t"+crypto+fiat,
                     name: name.slice(0,11),
@@ -77,7 +57,7 @@ const finalConf =function (rej, res){
                     ff: ffMap[fiat],
                     conv: 1,
                     buy_eligible: buy_eligible,
-                    sell_eligible: sell_eligible,
+                    sell_eligible: !buy_eligible,
                     index: index++
                 };
             };
@@ -86,8 +66,7 @@ const finalConf =function (rej, res){
 
             const BITBNS_EP = function(crypto){
                 const name = "BITB_"+crypto;
-                const buy_eligible = false;
-                const sell_eligible = true;
+                const buy_eligible = !ARBITRAGE;
                 return {
                     url: "http://bitbns.com/order/getTickerAll",
                     name: name.slice(0,11),
@@ -99,7 +78,7 @@ const finalConf =function (rej, res){
                     conv: 0.5,
                     ff: 1,
                     buy_eligible: buy_eligible,
-                    sell_eligible: sell_eligible,
+                    sell_eligible: !buy_eligible,
                     index: index++
                 };
             };

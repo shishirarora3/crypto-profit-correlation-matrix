@@ -1,6 +1,6 @@
 const notifier = require('node-notifier');
 var cloudscraper = require('cloudscraper');
-
+const ARBITRAGE = process.env.ARBITRAGE;
 /*function cmd_exec(cmd, args, cb_stdout, cb_end) {
     var spawn = require('child_process').spawn,
         child = spawn(cmd, args),
@@ -64,7 +64,7 @@ module.exports = {
             title: title,
             message: message || "",
             wait: true,
-            subtitle: "arbitrage",
+                subtitle: ARBITRAGE ? "Arbitrage" : "Reverse Arbitrage",
             sound:`Basso`
         },
         function(err, response) {
