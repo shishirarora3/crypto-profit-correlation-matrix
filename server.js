@@ -47,7 +47,7 @@ finalConf().then(function(END_POINT_CONFIG){
             );
     
             //console.log(HELPERS.print(END_POINT_CONFIG.BUYS, ENDPOINTS, profit_correlation_matrix));
-            if(max_profit>3) {
+            if (max_profit > 3.5) {
                 HELPERS.notify("Max Profit: " + max_profit, max_profit_message);
             }else{
                 console.log({max_profit, max_profit_message});
