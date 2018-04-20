@@ -46,8 +46,13 @@ finalConf().then(function(END_POINT_CONFIG){
                     });
                 }
             );
-            max_profit>3 && HELPERS.notify("Max Profit: " + max_profit, max_profit_message);
-            console.log(HELPERS.print(END_POINT_CONFIG.BUYS, ENDPOINTS, profit_correlation_matrix))
+            
+            console.log(HELPERS.print(END_POINT_CONFIG.BUYS, ENDPOINTS, profit_correlation_matrix));
+            if(max_profit>3) {
+                HELPERS.notify("Max Profit: " + max_profit, max_profit_message);
+            }else{
+                console.log({max_profit, max_profit_message});
+            }
         }).catch(function (error) {
             console.log(error);
         });
