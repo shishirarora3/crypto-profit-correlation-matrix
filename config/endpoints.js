@@ -55,10 +55,11 @@ const finalConf =function (rej, res){
                 bitbnsCryptos.push(_.keys(entry)[0]);
                 return result;
             }, {});
+            
             const bitfCryptos = res[3].filter(function(pair){
                 return pair.endsWith("usd");
             }).map(function(pair){
-                return pair.substring(0, "btcusd".indexOf("usd")).toUpperCase();
+                return pair.replace("usd", "").toUpperCase();
             });
 
             const BITF_EP = function(crypto, fiat){
