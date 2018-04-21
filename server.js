@@ -47,7 +47,7 @@ finalConf().then(function (END_POINT_CONFIG) {
                         });
                     }
                 );
-                if (max_profit > 1) {
+                if (max_profit > 2.5) {
                     HELPERS.notify("Max Profit: " + max_profit, max_profit_message, type);
                 }
                 console.log({max_profit, max_profit_message, type});
