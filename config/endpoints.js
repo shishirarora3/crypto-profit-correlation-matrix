@@ -2,7 +2,7 @@ const _ = require("lodash");
 
 const ffMap = {
     EUR: 80.40,
-    USD: 65.02,
+    USD: 68.02,
     JPY: 0.58
 };
 
