@@ -38,10 +38,16 @@ const finalConf = function (rej, res) {
         ffMap.USD = res[1].USD_INR;
         const bitbnsCryptos = [];
         BITBNS_CONF = _.reduce(res[2], function (result, entry, index) {
-            //if(_.includes(["XRP", "XLM", "NEO", "GAS"], _.keys(entry)[0])){
-            result[_.keys(entry)[0]] = index;
-            bitbnsCryptos.push(_.keys(entry)[0]);
-            //}
+            if(process.env.FILTER){
+                console.log("filtering........", "XRP", "XLM", "NEO", "GAS", "BTC", "ETH", "ONT", "BCH", "XVG", "ADA");
+                if(_.includes(["XRP", "XLM", "NEO", "GAS", "BTC", "ETH", "ONT", "BCH", "XVG", "ADA"], _.keys(entry)[0])){
+                    result[_.keys(entry)[0]] = index;
+                    bitbnsCryptos.push(_.keys(entry)[0]);
+                }
+            }else{
+                result[_.keys(entry)[0]] = index;
+                bitbnsCryptos.push(_.keys(entry)[0]);
+            }
             return result;
         }, {});
         
