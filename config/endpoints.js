@@ -40,7 +40,7 @@ const finalConf = function (rej, res) {
         BITBNS_CONF = _.reduce(res[2], function (result, entry, index) {
             if(process.env.FILTER){
                 console.log("filtering........", "XRP", "XLM", "NEO", "GAS", "BTC", "ETH", "ONT", "BCH", "XVG", "ADA");
-                if(_.includes(["XRP", "XLM", "NEO", "GAS", "BTC", "ETH", "ONT", "BCH", "XVG", "ADA"], _.keys(entry)[0])){
+                if(_.includes(["XRP", "XLM", "NEO", "GAS", "BTC", "ONT", "BCH", "XVG", "ADA"], _.keys(entry)[0])){
                     result[_.keys(entry)[0]] = index;
                     bitbnsCryptos.push(_.keys(entry)[0]);
                 }
