@@ -47,7 +47,12 @@ finalConf().then(function (END_POINT_CONFIG) {
                         });
                     }
                 );
-                max_profit > 2 && HELPERS.notify("Max Profit: " + max_profit, max_profit_message, type);
+                if(process.env.THRES){
+                    max_profit > process.env.THRES && HELPERS.notify("Max Profit: " + max_profit, max_profit_message, type);
+                }else{
+                    HELPERS.notify("Max Profit: " + max_profit, max_profit_message, type);
+                }
+
                 
                 console.log({max_profit, max_profit_message, type});
             };
