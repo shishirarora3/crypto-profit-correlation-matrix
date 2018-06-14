@@ -3,15 +3,15 @@ const TARGET_PROFIT = require("./config/target").TARGET_PROFIT_PERCENTAGE;
 const finalConf = require("./config/endpoints");
 const HELPERS = require('./helpers');
 const _ = require("lodash");
-
-finalConf().then(function (END_POINT_CONFIG) {
+let final = finalConf();
+let BTC = 0;
+final.then(function (END_POINT_CONFIG) {
     const ENDPOINTS = END_POINT_CONFIG.ENDPOINTS;
     const TRANSACTION_CHARGES = END_POINT_CONFIG.TRANSACTION_CHARGES;
     const cb = function () {
         Promise.all(ENDPOINTS.map(function (endPoint) {
             return HELPERS.fetch(endPoint);
         })).then(function (res) {
-    
             var profit_correlation_matrix = function (from, to, type) {
                 var max_profit = -999;
                 var max_profit_message = "NA";
@@ -19,6 +19,7 @@ finalConf().then(function (END_POINT_CONFIG) {
                     function (sell) {
                         var sellIndex = sell.index;
                         return to.map(function (buy) {
+
                             var buyIndex = buy.index;
                             var sp, cp, profit;
                             var _resSell = res[sellIndex];
@@ -26,22 +27,26 @@ finalConf().then(function (END_POINT_CONFIG) {
                     
                             sp = HELPERS.get(_resSell, sell.sell);
                             cp = HELPERS.get(_resBuy, buy.buy);
+
                             if (_.isNaN(+sp) || _.isNaN(+cp)) {
                                 return 0;
                             }
-                            profit = ENDPOINTS[buyIndex].name === ENDPOINTS[sellIndex].name ||
-                            ENDPOINTS[buyIndex].crypto !== ENDPOINTS[sellIndex].crypto ? -999 : HELPERS.profit(
+                            if(buy.name === "BITF_BTC_US"){
+                                BTC=cp*buy.ff;
+                            }
+                            profit = _resBuy.name === _resSell.name ||
+                            _resBuy.crypto !== _resSell.crypto ? -999 : HELPERS.profit(
                                 TARGET_PROFIT,
-                                TRANSACTION_CHARGES[buyIndex],
-                                sp * END_POINT_CONFIG.CONVERSION_FACTORS[sellIndex],
-                                cp * END_POINT_CONFIG.CONVERSION_FACTORS[buyIndex]
+                                _resBuy.conv,
+                                sp * (_resSell.ff? _resSell.ff: BTC),
+                                cp * (_resBuy.ff? _resBuy.ff: BTC)
                             );
                     
                             if (+profit > +max_profit) {
                                 max_profit = profit;
-                                max_profit_message = "Buy at " + ENDPOINTS[buyIndex].name +
+                                max_profit_message = "Buy at " + _resBuy.name +
                                     " for " + cp + " & sell at "
-                                    + ENDPOINTS[sellIndex].name + " for " + sp
+                                    + _resSell.name + " for " + sp
                             }
                             return profit;
                         });

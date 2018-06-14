@@ -7,6 +7,48 @@ let ffMap = {};
 let BITBNS_CONF = {};
 
 
+function getBitbnsep() {
+    return function (crypto) {
+        const name = "BITB_" + crypto;
+        const buy_eligible = false;
+        return {
+            url: "http://bitbns.com/order/getTickerAll",
+            name: name.slice(0, 11),
+            method: 'GET',
+            encoding: "utf8",
+            crypto: crypto,
+            sell: "[" + BITBNS_CONF[crypto] + "]." + crypto + ".buyPrice",
+            buy: "[" + BITBNS_CONF[crypto] + "]." + crypto + ".sellPrice",
+            conv: 0,
+            ff: 1,
+            buy_eligible: buy_eligible,
+            sell_eligible: !buy_eligible,
+            index: index++
+        };
+    };
+}
+
+function getBitfep() {
+    return function (crypto, fiat) {
+        const name = "BITF_" + crypto + "_" + fiat;
+        const buy_eligible = true;
+        return {
+            url: "https://api.bitfinex.com/v2/ticker/t" + crypto + fiat,
+            name: name.slice(0, 11),
+            method: 'GET',
+            encoding: "utf8",
+            crypto: crypto,
+            sell: "[0]",
+            buy: "[2]",
+            ff: ffMap[fiat],
+            conv: 0,
+            buy_eligible: buy_eligible,
+            sell_eligible: !buy_eligible,
+            index: index++
+        };
+    };
+}
+
 const finalConf = function (rej, res) {
     
     return Promise.all(
@@ -50,51 +92,21 @@ const finalConf = function (rej, res) {
             }
             return result;
         }, {});
-        
-        const bitfCryptos = res[3].filter(function (pair) {
+        console.log("BTC", ffMap.BTC);
+        const bitfCryptosUSD = res[3].filter(function (pair) {
             return pair.endsWith("usd");
         }).map(function (pair) {
             return pair.replace("usd", "").toUpperCase();
         });
-        
-        const BITF_EP = function (crypto, fiat) {
-            const name = "BITF_" + crypto + "_" + fiat;
-            const buy_eligible = true;
-            return {
-                url: "https://api.bitfinex.com/v2/ticker/t" + crypto + fiat,
-                name: name.slice(0, 11),
-                method: 'GET',
-                encoding: "utf8",
-                crypto: crypto,
-                sell: "[0]",
-                buy: "[2]",
-                ff: ffMap[fiat],
-                conv: 0,
-                buy_eligible: buy_eligible,
-                sell_eligible: !buy_eligible,
-                index: index++
-            };
-        };
-        
-        
-        const BITBNS_EP = function (crypto) {
-            const name = "BITB_" + crypto;
-            const buy_eligible = false;
-            return {
-                url: "http://bitbns.com/order/getTickerAll",
-                name: name.slice(0, 11),
-                method: 'GET',
-                encoding: "utf8",
-                crypto: crypto,
-                sell: "[" + BITBNS_CONF[crypto] + "]." + crypto + ".buyPrice",
-                buy: "[" + BITBNS_CONF[crypto] + "]." + crypto + ".sellPrice",
-                conv: 0,
-                ff: 1,
-                buy_eligible: buy_eligible,
-                sell_eligible: !buy_eligible,
-                index: index++
-            };
-        };
+
+        const bitfCryptosBTC = res[3].filter(function (pair) {
+            return pair.endsWith("btc");
+        }).map(function (pair) {
+            return pair.replace("btc", "").toUpperCase();
+        });
+
+        const BITF_EP = getBitfep();
+        const BITBNS_EP = getBitbnsep();
         
         let ENDPOINTS_CONFIG = {};
         
@@ -102,8 +114,12 @@ const finalConf = function (rej, res) {
                 r[`BITBNS_${crypto}`] = BITBNS_EP(crypto);
                 return r;
             }, {}),
-            _.reduce(bitfCryptos, function (r, crypto) {
+            _.reduce(bitfCryptosUSD, function (r, crypto) {
                 r[`BITF_${crypto}_USD`] = BITF_EP(crypto, "USD");
+                return r;
+            }, {}),
+            _.reduce(bitfCryptosBTC, function (r, crypto) {
+                r[`BITF_${crypto}_BTC`] = BITF_EP(crypto, "BTC");
                 return r;
             }, {})
         );
@@ -142,7 +158,8 @@ const finalConf = function (rej, res) {
             SELL_PRICE_PATH: SELL_PRICE_PATH,
             BUY_PRICE_PATH: BUY_PRICE_PATH,
             CONVERSION_FACTORS: CONVERSION_FACTORS,
-            TRANSACTION_CHARGES: TRANSACTION_CHARGES
+            TRANSACTION_CHARGES: TRANSACTION_CHARGES,
+            ffMap:ffMap
         }
     }).catch(function (err) {
         console.error(err);

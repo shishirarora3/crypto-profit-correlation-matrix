@@ -1,5 +1,6 @@
 const notifier = require('node-notifier');
 var cloudscraper = require('cloudscraper');
+const _ = require("lodash");
 
 module.exports = {
     get: function (obj, path) {
@@ -33,7 +34,7 @@ module.exports = {
                     console.log(JSON.stringify(error));
                     rej(error);
                 }
-                resolve(that.parseJSON(body, url));
+                resolve(_.assign(that.parseJSON(body, url), url));
             });
         });
     },
