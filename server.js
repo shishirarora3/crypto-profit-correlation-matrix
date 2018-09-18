@@ -58,7 +58,7 @@ final.then(
                     }
                 );
                 net_profit = net_profit + +max_profit;
-                if (type === TAKE_OUT_OF_INDIA && net_profit > (process.env.THRES || 2)) {
+                if (type === TAKE_OUT_OF_INDIA && net_profit > process.env.THRES) {
                     HELPERS.notify("Max Profit: " + max_profit + ", NET PROFIT: " + net_profit, max_profit_message, type);
                     console.log({max_profit, net_profit, max_profit_message, type});
                 }else{
