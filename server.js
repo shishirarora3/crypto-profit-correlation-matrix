@@ -60,10 +60,12 @@ final.then(
                 net_profit = net_profit + +max_profit;
                 if (type === TAKE_OUT_OF_INDIA && net_profit > (process.env.THRES || 2)) {
                     HELPERS.notify("Max Profit: " + max_profit + ", NET PROFIT: " + net_profit, max_profit_message, type);
+                    console.log({max_profit, net_profit, max_profit_message, type});
                 }else{
-                    HELPERS.notify("Max Profit: " + max_profit, max_profit_message, type);
+                    //HELPERS.notify("Max Profit: " + max_profit, max_profit_message, type);
+                    console.log({max_profit, max_profit_message, type});
                 }
-                console.log({max_profit, max_profit_message, type});
+
             };
 
             profit_correlation_matrix(END_POINT_CONFIG.SELLS, END_POINT_CONFIG.BUYS, BRING_BACK_TO_INDIA);
