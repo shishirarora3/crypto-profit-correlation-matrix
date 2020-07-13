@@ -1,7 +1,6 @@
 const notifier = require('node-notifier');
 var cloudscraper = require('cloudscraper');
-
-
+const _ = require("lodash");
 
 module.exports = {
     get: function (obj, path) {
@@ -35,19 +34,22 @@ module.exports = {
                     console.log(JSON.stringify(error));
                     rej(error);
                 }
-                resolve(that.parseJSON(body, url));
+                resolve(_.assign(that.parseJSON(body, url), url));
             });
         });
     },
-    notify: function (title,message ) {
+    notify: function (title, message, subtitle) {
         notifier.notify({
             title: title,
-            message: message || ""
+            message: message || "",
+            wait: true,
+            subtitle: subtitle,
+            sound:`Basso`
         });
     },
     profit: function (TARGET_PROFIT, TRANSACTION_CHARGE, sell, buy) {
         var r = (sell - buy) * 100 / buy;
-        var p = r - TRANSACTION_CHARGE;
+        var p = r - TRANSACTION_CHARGE; //6.5
         var profitFixed = p.toFixed(2);
         return profitFixed;
     },
